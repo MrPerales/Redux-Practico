@@ -1,27 +1,32 @@
 import React from "react";  
+import { useSelector ,useDispatch } from "react-redux";
+import { setPokes ,setLoading,setError} from "../Actions/Actions";
+
 
 function useFetch(url){
+const pokes=useSelector(state =>state.pokesData);
+const loading=useSelector(state=>state.loading);
+const error =useSelector(state=> state.error);
+const dispatch=useDispatch();
 
-const [data,setData]=React.useState(null);
-const [loading,setLoading]=React.useState(true);
-const [error,setError]=React.useState(false);
+
+// const [data,setData]=React.useState(null);
+// const [loading,setLoading]=React.useState(true);
+// const [error,setError]=React.useState(false);
 
 React.useEffect(()=>{
-    setLoading(true);
+    dispatch(setLoading(true))
     fetch(url)
         .then(resp=>resp.json())
         // en este caso .results por que es la propiedad 
         // que contiene el array que deseamos 
-        .then(data=>setData(data.results))
-        .catch(error=>setError(error))
-        .finally(()=>setLoading(false))
-
-
-
-
+        .then(data=>dispatch(setPokes(data.results)))
+        .catch(error=>dispatch(setError(error)))
+        .finally(()=>dispatch(setLoading(false)))
+    
 },[])
 
-    return {data,loading,error}
+    return {pokes,loading,error}
 }
 
 export {useFetch}

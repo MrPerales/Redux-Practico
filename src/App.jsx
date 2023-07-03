@@ -7,15 +7,15 @@ import { useFetch } from './Hooks/useFetch'
 
 const API='https://pokeapi.co/api/v2/pokemon?limit=151'
 function App() {
-  const {data}=useFetch(API);
-  // console.log(data);
+  const {pokes}=useFetch(API);
+  console.log(pokes);
   return (
     <>
       <Col span={8} offset={8}>
 
         <Searcher />
       </Col>
-      <PokeList pokes={data}/>
+      <PokeList pokes={pokes}/>
 
     </>
   )

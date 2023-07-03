@@ -1,7 +1,7 @@
 import { PokeCard } from "./PokeCard";  
 import '../Styles/pokeList.css'
 function PokeList({pokes}){
-    console.log(pokes);
+    // console.log(pokes);
     return(
         <div className='PokeList'>
             {pokes?.map(poke => (
