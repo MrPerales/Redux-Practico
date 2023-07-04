@@ -15,14 +15,14 @@ const dispatch=useDispatch();
 // const [error,setError]=React.useState(false);
 
 React.useEffect(()=>{
-    dispatch(setLoading(true))
+    // dispatch(setLoading(true))
     fetch(url)
         .then(resp=>resp.json())
         // en este caso .results por que es la propiedad 
         // que contiene el array que deseamos 
         .then(data=>dispatch(setPokes(data.results)))
         .catch(error=>dispatch(setError(error)))
-        .finally(()=>dispatch(setLoading(false)))
+        // .finally(()=>dispatch(setLoading(false)))
     
 },[])
 
