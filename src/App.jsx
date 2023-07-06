@@ -5,7 +5,6 @@ import { Col } from 'antd'
 import { PokeList } from './Components/PokeList'
 import { useSelector, useDispatch } from "react-redux";
 import { getPokemon, getPokesDetails } from './Hooks/get'
-import { SET_POKES } from './Actions/Types'
 import { setPokes } from './Actions/Actions'
 
 const API = 'https://pokeapi.co/api/v2/pokemon?limit=151'

@@ -14,6 +14,7 @@ function PokeList({pokes}) {
                     name={poke.name}
                     image={poke.sprites.front_shiny}
                     key={poke.name}
+                    types={poke.types}
                 />
             ))}
         </div>

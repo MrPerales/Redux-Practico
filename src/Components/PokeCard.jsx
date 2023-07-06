@@ -2,9 +2,8 @@ import { StarOutlined } from "@ant-design/icons";
 import { Card } from "antd";
 import Meta from "antd/es/card/Meta";
 
-function PokeCard({name,image}){
+function PokeCard({name,image,types}){
     
-   
 
     return(
         <>
@@ -13,8 +12,8 @@ function PokeCard({name,image}){
                 cover={<img src={image}/>}
                 extra={<StarOutlined/>}
             >
-                <Meta description="fire">
-                </Meta>
+                {types.map(type=><Meta key={type.type.name} description={type.type.name}/>)}
+                
             </Card>
             
         </>
