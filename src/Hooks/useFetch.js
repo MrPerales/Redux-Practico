@@ -1,32 +1,28 @@
-import React from "react";  
-import { useSelector ,useDispatch } from "react-redux";
-import { setPokes ,setLoading,setError} from "../Actions/Actions";
+import React from "react";
+import { setPokes, setLoading, setError } from "../Actions/Actions";
 
 
-function useFetch(url){
-const pokes=useSelector(state =>state.pokesData);
-const loading=useSelector(state=>state.loading);
-const error =useSelector(state=> state.error);
-const dispatch=useDispatch();
+function useFetch(url) {
 
+    // console.log(pokes);
 
-// const [data,setData]=React.useState(null);
-// const [loading,setLoading]=React.useState(true);
-// const [error,setError]=React.useState(false);
+    // const [data,setData]=React.useState(null);
+    // const [loading,setLoading]=React.useState(true);
+    // const [error,setError]=React.useState(false);
 
-React.useEffect(()=>{
-    // dispatch(setLoading(true))
-    fetch(url)
-        .then(resp=>resp.json())
-        // en este caso .results por que es la propiedad 
-        // que contiene el array que deseamos 
-        .then(data=>dispatch(setPokes(data.results)))
-        .catch(error=>dispatch(setError(error)))
+    React.useEffect(() => {
+        // dispatch(setLoading(true))
+        fetch(url)
+            .then(resp => resp.json())
+            // en este caso .results por que es la propiedad 
+            // que contiene el array que deseamos 
+            .then(data =>dispatch(setPokes(data.results)))
+            .catch(error => dispatch(setError(error)))
         // .finally(()=>dispatch(setLoading(false)))
-    
-},[])
 
-    return {pokes,loading,error}
+    }, [])
+
+
+    return { pokes, loading, error }
 }
-
-export {useFetch}
+export { useFetch }

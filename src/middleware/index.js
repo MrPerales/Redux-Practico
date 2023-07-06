@@ -16,7 +16,7 @@ export const capitalLetter=(store)=>(next)=>(actionInfo)=>{
     console.log(actionInfo,'actionInfo');
     // console.log('actionInfo');
     const editLetter=[
-        ...actionInfo.action.payload.map(poke=>({
+        ...actionInfo.action.payload.results.map(poke=>({
             ...poke,
             // charAt() metodo que toma una parte del texto dependiedo del index que pongamos
             // en este caso 0 la primera letra del nombre 

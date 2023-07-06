@@ -11,15 +11,15 @@ import 'antd/dist/reset.css';
 
 const composedEnhancers = compose(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(logger,capitalLetter)
+  applyMiddleware(logger)
 )
 const store = createStore(PokesReducer,composedEnhancers);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <>
     <Provider store={store}>
 
       <App />
     </Provider>
-  </React.StrictMode>,
+  </>,
 )

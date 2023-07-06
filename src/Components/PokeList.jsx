@@ -1,13 +1,18 @@
-import { PokeCard } from "./PokeCard";  
+import React from "react";
+import { PokeCard } from "./PokeCard";
 import '../Styles/pokeList.css'
-function PokeList({pokes}){
-    // console.log(pokes);
-    return(
+
+
+function PokeList({pokes}) {
+
+
+
+    return (
         <div className='PokeList'>
-            {pokes?.map(poke => (
+            {pokes.map(poke => (
                 <PokeCard
                     name={poke.name}
-                    url={poke.url}
+                    image={poke.sprites.front_shiny}
                     key={poke.name}
                 />
             ))}
@@ -21,4 +26,4 @@ function PokeList({pokes}){
 
 
 
-export {PokeList};
+export { PokeList };

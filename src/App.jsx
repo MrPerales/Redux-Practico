@@ -3,19 +3,41 @@ import './App.css'
 import { Searcher } from './Components/Searcher'
 import { Col } from 'antd'
 import { PokeList } from './Components/PokeList'
-import { useFetch } from './Hooks/useFetch'
+import { useSelector, useDispatch } from "react-redux";
+import { getPokemon, getPokesDetails } from './Hooks/get'
+import { SET_POKES } from './Actions/Types'
+import { setPokes } from './Actions/Actions'
 
-const API='https://pokeapi.co/api/v2/pokemon?limit=151'
+const API = 'https://pokeapi.co/api/v2/pokemon?limit=151'
+
 function App() {
-  const {pokes}=useFetch(API);
-  // console.log(pokes);
+  const pokes = useSelector(state => state.pokesData);
+  const dispatch = useDispatch();
+  console.log(pokes);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+
+      const pokeRes = await getPokemon();
+      // console.log(pokeRes);
+
+      const pokesDetails = await Promise.all(pokeRes.map(poke => 
+        getPokesDetails(poke.url)
+      )).then(allData =>allData)
+      dispatch(setPokes(pokesDetails))
+    }
+
+    fetchData();
+  }, [])
+
+
   return (
     <>
       <Col span={8} offset={8}>
 
         <Searcher />
       </Col>
-      <PokeList pokes={pokes}/>
+      <PokeList pokes={pokes} />
 
     </>
   )
