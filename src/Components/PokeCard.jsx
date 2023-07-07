@@ -2,13 +2,13 @@ import { StarOutlined } from "@ant-design/icons";
 import { Card } from "antd";
 import Meta from "antd/es/card/Meta";
 
-function PokeCard({name,image,types}){
+function PokeCard({name,image,types,pokeDexNum}){
     
 
     return(
         <>
             <Card 
-                title={name}
+                title={`#${pokeDexNum} ${name}`}
                 cover={<img src={image}/>}
                 extra={<StarOutlined/>}
             >
