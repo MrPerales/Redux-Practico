@@ -9,8 +9,9 @@ export const setError = (payload) => ({
     type: SET_ERROR,
     payload
 })
-export const setLoading = () => ({
+export const setLoading = (payload) => ({
     type: SET_LOADING,
+    payload
 })
 
 // redux thunks 

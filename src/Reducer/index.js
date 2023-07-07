@@ -2,7 +2,7 @@ import { SET_ERROR, SET_LOADING, SET_POKES } from "../Actions/Types"
 
 const initialState = {
     pokesData: [],
-    loading:true,
+    loading:false,
     error:false,
 }
 
@@ -11,12 +11,12 @@ export const PokesReducer = (state=initialState, action) => {
         case SET_POKES:
             return {
                 ...state,
-                loading:false,
                 pokesData: action.payload
             }
         case SET_LOADING:
             return {
                 ...state,
+                loading:action.payload
             }
         case SET_ERROR:
             return{
