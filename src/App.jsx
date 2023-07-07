@@ -5,7 +5,7 @@ import { Col } from 'antd'
 import { PokeList } from './Components/PokeList'
 import { useSelector, useDispatch } from "react-redux";
 import { getPokemon, getPokesDetails } from './Hooks/get'
-import { setPokes } from './Actions/Actions'
+import { getPokemonWithDetails, setPokes } from './Actions/Actions'
 
 const API = 'https://pokeapi.co/api/v2/pokemon?limit=151'
 
@@ -19,11 +19,8 @@ function App() {
 
       const pokeRes = await getPokemon();
       // console.log(pokeRes);
-
-      const pokesDetails = await Promise.all(pokeRes.map(poke => 
-        getPokesDetails(poke.url)
-      )).then(allData =>allData)
-      dispatch(setPokes(pokesDetails))
+      // se utiliza redux thunk
+      dispatch(getPokemonWithDetails(pokeRes));
     }
 
     fetchData();
