@@ -6,12 +6,14 @@ import { PokeList } from './Components/PokeList'
 import { useSelector, useDispatch } from "react-redux";
 import { getPokemon, getPokesDetails } from './Hooks/get'
 import { getPokemonWithDetails, setLoading, setPokes } from './Actions/Actions'
+import { get} from 'immutable'
 
 const API = 'https://pokeapi.co/api/v2/pokemon?limit=151'
 
 function App() {
-  const pokes = useSelector(state => state.pokesData);
-  const loading = useSelector(state => state.loading)
+  // para que podamos usar como objeto plano
+  const pokes = useSelector((state) => get(state,'pokesData')).toJS();
+  const loading = useSelector((state)=>get(state,'loading'));
   const dispatch = useDispatch();
   console.log(pokes);
 
