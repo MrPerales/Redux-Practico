@@ -16,6 +16,8 @@ function PokeList({pokes}) {
                     key={poke.name}
                     types={poke.types}
                     pokeDexNum={poke.order}
+                    id={poke.id}
+                    favorite={poke.favorite}
                 />
             ))}
         </div>

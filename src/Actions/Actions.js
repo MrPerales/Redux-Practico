@@ -1,5 +1,5 @@
 import { getPokesDetails } from "../Hooks/get"
-import { SET_ERROR, SET_LOADING, SET_POKES } from "./Types"
+import { SET_ERROR, SET_FAVORITES, SET_LOADING, SET_POKES } from "./Types"
 
 export const setPokes = (payload) => ({
     type: SET_POKES,
@@ -12,6 +12,11 @@ export const setError = (payload) => ({
 export const setLoading = (payload) => ({
     type: SET_LOADING,
     payload
+})
+export const setFavorite=(payload)=>({
+    type:SET_FAVORITES,
+    payload,
+
 })
 
 // redux thunks 
