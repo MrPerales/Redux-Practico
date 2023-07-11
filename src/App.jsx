@@ -3,17 +3,17 @@ import './App.css'
 import { Searcher } from './Components/Searcher'
 import { Col, Spin } from 'antd'
 import { PokeList } from './Components/PokeList'
-import { useSelector, useDispatch } from "react-redux";
-import { getPokemon, getPokesDetails } from './Hooks/get'
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { getPokemon } from './Hooks/get'
 import { getPokemonWithDetails, setLoading, setPokes } from './Actions/Actions'
-import { get} from 'immutable'
+import {  getIn} from 'immutable'
 
 const API = 'https://pokeapi.co/api/v2/pokemon?limit=151'
 
 function App() {
   // para que podamos usar como objeto plano
-  const pokes = useSelector((state) => get(state,'pokesData')).toJS();
-  const loading = useSelector((state)=>get(state,'loading'));
+  const pokes = useSelector((state) => getIn(state,['data','pokesData'],shallowEqual)).toJS();
+  const loading = useSelector((state)=>getIn(state,['ui','loading']));
   const dispatch = useDispatch();
   console.log(pokes);
 

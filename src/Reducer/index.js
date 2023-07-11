@@ -1,11 +1,10 @@
 import { fromJS, setIn, getIn, get } from "immutable"
-import { SET_ERROR, SET_FAVORITES, SET_LOADING, SET_POKES } from "../Actions/Types"
+import { SET_FAVORITES,  SET_POKES } from "../Actions/Types"
 
 //fromJS() para que sea una estructura de inmmutable
 const initialState = fromJS({
     pokesData: [],
-    loading: false,
-    error: false,
+
 })
 
 export const PokesReducer = (state = initialState, action) => {
@@ -21,19 +20,7 @@ export const PokesReducer = (state = initialState, action) => {
             // 2do parametro recibe el payload con la estructura  fromjS 
             return setIn(state, ['pokesData'], fromJS(action.payload))
 
-        case SET_LOADING:
-            // return {
-            //     ...state,
-            //     loading: action.payload
-            // }
-            return setIn(state,['loading'],action.payload);
-
-        case SET_ERROR:
-            // return {
-            //     ...state,
-            //     error: payload
-            // }
-            return setIn(state,['error'],action.payload)
+       
         case SET_FAVORITES:
             // get para acceder al estado en la posicion de pokesData
             const currentPokeIndex = get(state, 'pokesData').findIndex(poke => {
